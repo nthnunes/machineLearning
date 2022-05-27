@@ -23,5 +23,16 @@ base[, 3] <- scale(base[, 3])
 base[, 5] <- scale(base[, 5])
 base[, 11:13] <- scale(base[, 11:13])
 
+# import some tools of machine learning
+library(caTools)
+set.seed(1)
+
+# split data to learning and test
+division <- sample.split(base$income, SplitRatio = 0.85)
+
+# set training and test data
+training <- subset(base, division == TRUE)
+test <- subset(base, division == FALSE)
+
 
 View(base)
